@@ -27,13 +27,13 @@
 
  <h2> :clipboard: Objetivos da Prática </h2>
 
-* Configurar o ambiente de desenvolvimento React Native.
-* Implementar a funcionalidade de entrada de texto em um componente
-React Native.
-* Implementar um Componente de Lista Dinâmica (ScrollView);.
-* Implementar componentes React Native para exibir informações de forma
-dinâmica em listas;
-* Empregar elementos visuais em um aplicativo React Native.
+* Instalar e configurar o Flutter SDK e o ambiente de desenvolvimento integrado (IDE)
+de acordo com as melhores práticas;
+* Empregar Widgets fundamentais, como MaterialApp, Scaffold, AppBar, Text e
+RaisedButton;
+* Aplicar diferentes Widgets para criar uma interface visual atraente e funcional;
+* Aplicar o widget ListView para exibir e gerenciar listas de dados;
+* Criar e implementar funcionalidades personalizadas para um Widget específico.
 <hr>
 
 <h2> Códigos </h2>
