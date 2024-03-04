@@ -17,12 +17,12 @@
 * [EMERSON GREGORIO ALVES](https://github.com/Gregdev22) - MATRICULA: 2022.0908.4986
 <hr>
  <h1 align="center"> Missão Prática | Nível 2 | Mundo 4 </h1>
- <h2 align="left" > Adicionando interatividade com o React Native. </h2> 
- <h3>Microatividade 1: Configurar o ambiente de desenvolvimento React Native </h3>
- <h3>Microatividade 2: Implementar a funcionalidade de entrada de texto em um componente React Native</h3>
- <h3>Microatividade 3: Implementar um Componente de Lista Dinâmica (ScrollView)</h3>
- <h3>Microatividade 4: Criando o visualizador de listas </h3>
- <h3>Microatividade 5: Empregar imagens, seja para exibir gráficos, ícones, fotos ou outros elementos visuais em um aplicativo React Native </h3>
+ <h2 align="left" > Posso criar um App de outra forma. </h2> 
+ <h3>Microatividade 1: Preparação do ambiente </h3>
+ <h3>Microatividade 2: Utilização de Widgets Flutter Básicos - MaterialApp, Scaffold e AppBar </h3>
+ <h3>Microatividade 3: Criação de layouts básicos com os Widgets </h3>
+ <h3>Microatividade 4: Utilização do Widget ListView em Flutter </h3>
+ <h3>Microatividade 5: Desenvolvimento de Outra Funcionalidade para o Widget em Flutter </h3>
  <hr>
 
  <h2> :clipboard: Objetivos da Prática </h2>
