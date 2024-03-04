@@ -38,333 +38,544 @@ RaisedButton;
 
 <h2> Códigos </h2>
 
-* App.js
+* Contato_screen.dart
 
-``` Javascript
-import logo from './logo.svg';
-import './App.css';
-import CatApp from './CatApp';
-import Cadastro from './Cadastro';
-import Lista from './Lista';
-import Inicial from './Inicial';
-import { NavigationContainer, DarkTheme } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+``` Dart
+import 'package:explore_mundov2/screens/home_screen.dart';
+import 'package:explore_mundov2/widgets/post_app_bar.dart';
+import 'package:explore_mundov2/widgets/post_bottom_bar.dart';
+import 'package:flutter/material.dart';
 
+class ContatoScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    return Scaffold(
+        body: Column(
+      children: <Widget>[
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ),
+            );
+          },
+          child: Container(
+            alignment: Alignment.topLeft,
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 6,
+                  )
+                ]),
+            child: Icon(
+              Icons.arrow_back,
+              size: 28,
+            ),
+          ),
+        ),
+        Stack(
+          alignment: Alignment.bottomCenter,
+          children: <Widget>[
+            Image.asset('images/agencia.jpg'),
+          ],
+        ),
+        IntrinsicHeight(
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: themeData.dividerColor,
+                ),
+              ),
+            ),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: <Widget>[],
+                    mainAxisAlignment: MainAxisAlignment.start,
+                  ),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('(81)9555-1234'),
+                                Text(
+                                  'Whatsapp',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            child: Icon(
+                              Icons.message,
+                              color: themeData.primaryColor,
+                            ),
+                            height: 60,
+                            width: 60,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('(81)3555-6789'),
+                                Text(
+                                  'Unidade Recife',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            child: Icon(
+                              Icons.call,
+                              color: themeData.primaryColor,
+                            ),
+                            height: 60,
+                            width: 60,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('(87)3555-6788'),
+                                Text(
+                                  'Unidade Joao Pessoa',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            child: Icon(
+                              Icons.call,
+                              color: themeData.primaryColor,
+                            ),
+                            height: 60,
+                            width: 60,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('exploremundo@gmail.com'),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            child: Icon(
+                              Icons.email,
+                              color: themeData.primaryColor,
+                            ),
+                            height: 60,
+                            width: 60,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ));
+  }
+}
+```
 
-const Stack = createStackNavigator();
+* home_screen.dart
 
-function App() {
-  return (
-    //<Cat/>
-    //<CatApp/>
-    <NavigationContainer theme={DarkTheme}> 
-      <Stack.Navigator initialRouteName="Inicial">
-        <Stack.Screen name="Home" component={Inicial} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
-        <Stack.Screen name="Lista" component={Lista}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+``` Dart
+import 'package:explore_mundov2/screens/contato_screen.dart';
+import 'package:explore_mundov2/screens/post_screen.dart';
+import 'package:explore_mundov2/screens/sobre_screen.dart';
+import 'package:explore_mundov2/widgets/home_bottom_bar.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+
+import '../widgets/home_app_bar.dart';
+
+class LugaresModel {
+  String lugar_nome;
+  String lugar_descricao;
+  String lugar_cidadepais;
+  String lugar_imagem;
+
+  LugaresModel(this.lugar_nome, this.lugar_descricao, this.lugar_cidadepais,
+      this.lugar_imagem);
 }
 
-export default App;
-```
-
-* Cadastro.jsx
-
-``` Javascript
-import React, { useState } from 'react';
-import { Text, Button, Image, TextInput, View, Platform, StyleSheet, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createElement } from 'react';
-
-
-const Cadastro = () => {
-
-  const [alerta, setAlerta] = useState('');
-
-  const [fornecedor, setFornecedor] = useState({
-    nome: '',
-    endereco: '',
-    contato: '',
-    categorias: '',
-  });
-
-  const [image, setImage] = useState(null);
-
-  const handleInputChange = (field, value) => {
-    setFornecedor({
-      ...fornecedor,
-      [field]: value,
-    });
-  };
-
-  const selecionaImagem = Platform.OS === 'web' ? (event) => {
-    setImage(URL.createObjectURL(event.target.files[0]));
-  } : () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true
-    }).then(image => {
-      setImage(image.path);
-    });
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const existingSuppliers = await AsyncStorage.getItem('@fornecedor');
-      let newSuppliers = JSON.parse(existingSuppliers);
-      if (!newSuppliers || !Array.isArray(newSuppliers)) {
-        newSuppliers = [];
-      }
-      newSuppliers.push({ ...fornecedor, image });
-      await AsyncStorage.setItem('@fornecedor', JSON.stringify(newSuppliers));
-      setFornecedor({nome:'', 
-      endereco: '',
-      contato: '',
-      categorias: ''});
-      setAlerta('Usuario Cadastrado! ')
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  let ImagePicker;
-  if (Platform.OS !== 'web') {
-    ImagePicker = require('react-native-image-crop-picker').default;
-  };
-
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.label}>Nome:</Text>
-        <TextInput
-          style={styles.input}
-          value={fornecedor.nome}
-          onChangeText={(value) => handleInputChange('nome', value)}
-        />
-      </View>
-      <br />
-      <View>
-        <Text style={styles.label}>Endereço:</Text>
-        <TextInput
-          style={styles.input}
-          value={fornecedor.endereco}
-          onChangeText={(value) => handleInputChange('endereco', value)}
-        />
-      </View>
-      <br />
-      <View>
-        <Text style={styles.label}>Contato:</Text>
-        <TextInput
-          style={styles.input}
-          value={fornecedor.contato}
-          onChangeText={(value) => handleInputChange('contato', value)}
-        />
-      </View>
-      <br />
-      <View>
-        <Text style={styles.label}>Categorias:</Text>
-        <TextInput
-          style={styles.input}
-          value={fornecedor.categorias}
-          onChangeText={(value) => handleInputChange('categorias', value)}
-        />
-      </View>
-      <br />
-      {image && <Image source={{ uri: image }} style={styles.image} />}
-      {Platform.OS === 'web' ? (
-        <input type="file" accept="image/*" onChange={selecionaImagem} />
-      ) : (
-        <Button title="Selecionar Imagem" onPress={selecionaImagem} />
-      )}
-      <br />
-      <Button title="Cadastrar" onPress={handleSubmit}  
-      />
-      <Text>{alerta}</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#F5FCFF',
-  },
-  label: {
-    width: 100,
-    marginRight: 10,
-    fontSize: 16,
-  },
-  input: {
-    flex: 1,
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingLeft: 10,
-  },
-  image: {
-    width: 20,
-    height: 200,
-    marginBottom: 20,
-  },
-});
-
-export default Cadastro;
-```
-
-* Inicial.jsx
-
-``` Javascript
-import React from 'react';
-import { View, Button} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-function Inicial() {
-  const navigation = useNavigation();
-
-  return (
-    <View 
-    style={{
-      backgroundColor: 'white',
-    }}
-    >
-      <View 
-      style = {{
-        padding:10,
-        width:300
-      }}
-      >
-      <Button
-          title="Cadastrar Fornecedor"
-          onPress={() => navigation.navigate('Cadastro')}
-      />
-      </View>
-      <View 
-      style= {{
-        padding:10,
-        width:300
-      }}
-      >
-        <Button
-          title="Lista de Fornecedores"
-          onPress={() => navigation.navigate('Lista')}
-        />
-      </View>  
-    </View>
-
-  );
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreen createState() => _HomeScreen();
 }
 
+class _HomeScreen extends State<HomeScreen> {
+  static List<LugaresModel> lugares = [
+    LugaresModel(
+        'Rio de Janeiro',
+        'Cristo Redentor é uma estátua que retrata Jesus Cristo localizada no topo do morro do Corcovado, a 709 metros acima do nível do mar, com vista para parte considerável da cidade brasileira do Rio de Janeiro. Feito de concreto armado e pedra-sabão, tem trinta metros de altura (uma das maiores estátuas do mundo), sem contar os oito metros do pedestal, sendo a mais alta estátua do mundo no estilo Art Déco. Seus braços se esticam por 28 metros de largura e a estrutura pesa 1145 toneladas.',
+        'Rio de Janeiro, Brazil',
+        'images/city1.jpg'),
+    LugaresModel(
+        'Grand Canyon',
+        'O Grand Canyon, no Arizona, é uma formação natural constituída de camadas de rocha vermelha, que revelam milhões de anos da história geológica em seção transversal. De vastas proporções, o cânion tem, em média, 16 km de largura e 1,6 km de profundidade ao longo de seu comprimento de 445 km. Grande parte da área é um parque nacional, com as paisagens impressionantes e as corredeiras de águas bravas do Rio Colorado.',
+        'Arizona, EUA',
+        'images/city2.jpg'),
+    LugaresModel(
+        'Lisboa',
+        ' Torre de Belém, antigamente Torre de São Vicente a Par de Belém, oficialmente Torre de São Vicente,[1] é uma fortificação localizada na freguesia de Belém, concelho e distrito de Lisboa, em Portugal. Na margem direita do rio Tejo, onde existiu outrora a praia de Belém, era primitivamente cercada pelas águas em todo o seu perímetro. Ao longo dos séculos foi envolvida pela praia, até se incorporar hoje a terra firme. Um dos ex libris da cidade, o monumento é um ícone da arquitetura do reinado de D. Manuel I, numa síntese entre a torre de menagem de tradição medieval e o baluarte moderno, onde se dispunham peças de artilharia.',
+        'Lisboa, Portugal',
+        'images/city3.jpg'),
+    LugaresModel(
+        'Paris',
+        'Torre Eiffel (em francês: Tour Eiffel, /tuʀ ɛfɛl/) é uma torre de treliça de ferro forjado no Champ de Mars, em Paris, França. Tem o nome do engenheiro Gustave Eiffel, cuja empresa projetou e construiu a torre.',
+        'Paris, França',
+        'images/city4.jpg'),
+    LugaresModel(
+        'Vaticano',
+        'Vaticano ou Cidade do Vaticano, oficialmente Estado da Cidade do Vaticano (em italiano: Stato della Città del Vaticano [tʃitˈta del vatiˈkaːno]; em latim: Civitas Vaticana),[7] é a sede[8] da Igreja Católica e uma cidade-Estado soberana sem costa marítima, cujo território consiste de um enclave murado dentro da cidade de Roma, capital da Itália. Com aproximadamente 44 hectares (0,44 km²) e com uma população estimada de 1 000 habitantes, é a menor entidade territorial do mundo administrada por um Estado.[9][10]',
+        'Vaticano, Italia',
+        'images/city5.jpg'),
+    LugaresModel(
+        'Ilhas Maldivas',
+        'A República das Maldivas (em divehi: ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ, transl. Dhivehi Raajjeyge Jumhooriyya) é um pequeno país insular situado no Oceano Índico ao sudoeste do Sri Lanka e da Índia, ao sul do continente asiático, constituído por 1 196 ilhas, das quais 203 são habitadas, localizadas a cerca de 450 km ao sul da península do Decão. A sua única fronteira real é com o território indiano das Laquedivas, a norte, mas são também os vizinhos mais próximos do Território Britânico do Oceano Índico, um conjunto de ilhas localizadas ao sul das Maldivas.',
+        'Ilhas Maldivas',
+        'images/city6.jpg')
+  ];
 
-export default Inicial;
-```
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(90.0),
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 180,
+                  child: TextField(
+                    onChanged: (value) => searchLugar(value),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Pesquisar Destino',
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ContatoScreen(), // Fazer a pagina contato screen!!
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 6,
+                          )
+                        ]),
+                    child: Icon(
+                      Icons.phone,
+                      size: 28,
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            SobreScreen(), // Fazer a pagina contato screen!!
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black26, blurRadius: 6),
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.people,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      size: 28,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )),
+      body: SafeArea(
+          child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+              ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: display_list.length,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.all(15),
+                      child: Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, "/post_screen",
+                                  //arguments: index + 1,
+                                  arguments: LugaresModel(
+                                    display_list[index].lugar_nome,
+                                    display_list[index].lugar_descricao,
+                                    display_list[index].lugar_cidadepais,
+                                    display_list[index].lugar_imagem,
+                                  ));
+                            },
+                            child: Container(
+                              height: 200,
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      display_list[index].lugar_imagem),
 
-* Lista.jsx
-
-``` Javascript
-import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, TextInput, Image, StyleSheet,Button} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const Lista = () => {
-  const [fornecedores, setFornecedores] = useState([]);
-  const [localFornecedor, setLocalFornecedor] = useState([]);
-  const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    const fetchFornecedores = async () => {
-      try {
-        const jsonValue = await AsyncStorage.getItem('@fornecedor')
-        setFornecedores(jsonValue != null ? JSON.parse(jsonValue) : []);
-      } catch(e) {
-        console.log(e);
-      }
-    }
-
-    fetchFornecedores();
-  }, []);
-
-  useEffect(() => {
-    setLocalFornecedor(
-      fornecedores.filter((fornecedor) =>
-        fornecedor.nome.toLowerCase().includes(search.toLowerCase())
-      )
+                                  /// AssetImage("images/city${index + 1}.jpg"),
+                                  fit: BoxFit.cover,
+                                  opacity: 0.8,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  display_list[index].lugar_nome,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Row(children: [
+                            Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                              size: 20,
+                            ),
+                            Text(
+                              "4.5",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    );
+                  })
+            ],
+          ),
+        ),
+      )),
+      //bottomNavigationBar: HomeBottomBar(),
     );
-  }, [search, fornecedores]);
-
-  const deleteFornecedor = (index) => {
-    const itensCopy = Array.from(fornecedores);
-    itensCopy.splice(index, 1);
-    setFornecedores(itensCopy);
-    AsyncStorage.setItem('@fornecedor', JSON.stringify(fornecedores));
-    //AsyncStorage.removeItem('@fornecedor');
   }
 
-  const renderItem = ({ item, index }) => (
-      <View style={[styles.itemContainer, {backgroundColor: index % 2 === 0 ? '#e0ffff' : '#778899'}]}>
-        <Button 
-        title="Excluir" 
-        onPress={() => deleteFornecedor(index)}
-        />
-        <Text style={styles.itemText}>{item.nome}</Text>
-        <Text style={styles.itemText}>{item.endereco}</Text>
-        <Text style={styles.itemText}>{item.contato}</Text>
-        <Text style={styles.itemText}>{item.categorias}</Text>
-        <Image source={item.image ? { uri: item.image } : require('./logo.svg')} style={styles.image} />
-      </View>
-  );
+  List<LugaresModel> display_list = List.from(lugares);
 
-  return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        value={search}
-        onChangeText={setSearch}
-        placeholder="Pesquisar"
-      />
-      <FlatList
-        data={localFornecedor}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.nome}
-      />
-    </View>
-  );
-};
+  void searchLugar(String valor) {
+    setState(() {
+      display_list = lugares
+          .where((element) =>
+              element.lugar_nome.toLowerCase().contains(valor.toLowerCase()))
+          .toList();
+    });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: 'white',    
-  },
-  input: {
-    height: 30,
-    width:500,
-    borderColor: 'black',
-    borderWidth: 1,
-    paddingLeft: 1,
-    marginBottom: 5,
-  },
-  itemContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    paddingBottom: 1,
-  },
-  image: {
-    width: 50,
-    height: 50,
-    marginRight: 1,
-  },
-  itemText: {
-    flex: 1,
-    fontSize: 20,
-  },
-});
+    print(display_list.first.lugar_imagem);
+  }
+}
+```
 
-export default Lista;
+* post_screen.dart
+
+``` Dart
+import 'package:explore_mundov2/screens/home_screen.dart';
+import 'package:explore_mundov2/widgets/post_app_bar.dart';
+import 'package:explore_mundov2/widgets/post_bottom_bar.dart';
+import 'package:flutter/material.dart';
+
+class PostScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var data = (ModalRoute.of(context)!.settings.arguments) as LugaresModel;
+
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(data.lugar_imagem),
+          fit: BoxFit.cover,
+          opacity: 0.7,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(90),
+          child: PostAppBar(),
+        ),
+        bottomNavigationBar: PostBottomBar(),
+      ),
+    );
+  }
+}
+```
+
+* sobre_screen.dart
+
+``` Dart
+import 'package:explore_mundov2/screens/home_screen.dart';
+import 'package:flutter/material.dart';
+
+class SobreScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                        )
+                      ]),
+                  child: Icon(
+                    Icons.arrow_back,
+                    size: 28,
+                  ),
+                ),
+              ),
+              CircleAvatar(
+                  radius: 70,
+                  backgroundImage: AssetImage('images/agencia.jpg')),
+              Text(
+                'Explore Mundo',
+                style: TextStyle(
+                    fontFamily: 'Pacifico',
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 20,
+                width: 150,
+                child: Divider(
+                  color: Color(0xfff07b3f),
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 2, horizontal: 25),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                  ),
+                  title: Text(
+                    'Explore Mundo foi fundada em 2024 com o desejo de mudar o mundo. Estabelecemos a melhor plataforma de pacote de viagens do mundo e essa é nossa missão. Nossa equipe está totalmente distribuída ao redor do mundo. Estamos sempre em busca de grandes talentos que compartilhem dos mesmos valores e sejam tão entusiasmados quanto nós. Atendemos a milhares de clientes de 128 países em todo o mundo.',
+                    style: TextStyle(
+                      fontFamily: 'SourceSansPro',
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 ```
  <br>
   <hr>
